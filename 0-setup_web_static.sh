@@ -4,10 +4,10 @@
 # install nginx if it's not already installed
 if !( which nginx >/dev/null );
 then
-    apt-get update
-    apt-get install nginx
+    sudo apt-get -y update
+    sudo apt-get -y install nginx
     echo -e "\e[1;34m Nginx installed successfully\e[0m"
-    ufw allow 'Nginx HTTP'
+    sudo ufw allow 'Nginx HTTP'
 fi;
 
 # creates folders and file if not exists
@@ -16,7 +16,7 @@ mkdir -p /data/web_static/shared/
 echo -e "\e[1;34m Folders created\e[0m"
 
 # Give ownership of the /data/ folder to the ubuntu user AND group
-chown -hR vagrant:vagrant /data/
+chown -hR ubuntu:ubuntu /data/
 chmod -R 755 /data/web_static/releases/test/
 
 # with simple content, to test your Nginx configuration
@@ -38,6 +38,7 @@ echo -e "\e[1;34Symlink /data/web/static/current \
 server_block="server {
     listen 80 default_server;
     listen [::]:80 default_server;
+    add_header X-Served-By ${hostname};
     root /var/www/html/;
     index index.html index.htm index.nginx_debian.html;
 
@@ -47,13 +48,18 @@ server_block="server {
         try_files \$uri \$uri/ =404;
     }
 
+    location /redirect_me {
+        return 301 https://youtube.com/devbhobo/;
+    }
+
+    location /hbnb_static {
+        alias /data/web_static/current/;
+        index index.html index.htm;
+    }
+
     error_page 404 /404.html;
     location /404.html {
         internal;
-    }
-
-    location /hbnb_static/ {
-        alias /data/web_static/current/;
     }
 }
 "
