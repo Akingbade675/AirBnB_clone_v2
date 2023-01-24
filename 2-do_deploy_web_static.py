@@ -9,9 +9,10 @@ from datetime import datetime
 from fabric.api import env, local, put, run, runs_once
 
 
-env.hosts = ['34.138.32.248', '3.226.74.205']
+env.hosts = ['54.146.67.10', '52.91.144.238']
 
 
+'''
 def do_deploy(archive_path):
     """Distributes an archive to a web server.
     Args:
@@ -39,6 +40,7 @@ def do_deploy(archive_path):
     except Exception:
         output = None
     return output
+'''
 
 
 def do_deploy(archive_path):

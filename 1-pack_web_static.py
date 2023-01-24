@@ -1,4 +1,4 @@
-<F3>#!/usr/bin/python3
+#!/usr/bin/python3
 '''Fabric script to generate .tgz archive'''
 
 from fabric.api import local

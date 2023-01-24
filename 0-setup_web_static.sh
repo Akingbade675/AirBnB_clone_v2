@@ -11,13 +11,12 @@ then
 fi;
 
 # creates folders and file if not exists
-mkdir -p /data/web_static/releases/test/
-mkdir -p /data/web_static/shared/
+sudo mkdir -p /data/web_static/releases/test /data/web_static/shared
 echo -e "\e[1;34m Folders created\e[0m"
 
 # Give ownership of the /data/ folder to the ubuntu user AND group
-chown -hR ubuntu:ubuntu /data/
-chmod -R 755 /data/web_static/releases/test/
+sudo chown -hR ubuntu:ubuntu /data
+sudo chmod -R 755 /data/web_static/releases/test/
 
 # with simple content, to test your Nginx configuration
 echo "Hello World!
@@ -68,7 +67,7 @@ ln -sf /etc/nginx/sites-available/hbnb_static /etc/nginx/sites-enabled/default
 
 if pgrep -x "nginx" > /dev/null
 then
-    service nginx restart
+    sudo service nginx restart
 else
-    service nginx start
+    sudo service nginx start
 fi;
