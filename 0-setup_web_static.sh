@@ -15,7 +15,6 @@ sudo mkdir -p /data/web_static/releases/test /data/web_static/shared
 echo -e "\e[1;34m Folders created\e[0m"
 
 # Give ownership of the /data/ folder to the ubuntu user AND group
-sudo chown -hR ubuntu:ubuntu /data
 sudo chmod -R 755 /data/web_static/releases/test/
 
 # with simple content, to test your Nginx configuration
@@ -30,6 +29,8 @@ I am so happy of my progress" > /data/web_static/releases/test/index.html
 ln -sf /data/web_static/releases/test/ /data/web_static/current
 echo -e "\e[1;34Symlink /data/web/static/current \
 -> /data/web_static/releases/test/"
+
+sudo chown -hR ubuntu:ubuntu /data
 
 # Update the Nginx configuration to serve the 
 # content of /data/web_static/current/ to hbnb_static
