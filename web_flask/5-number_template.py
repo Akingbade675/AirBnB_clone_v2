@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Starts a Flask web application
+"""Starts a Flask web application
 Routes:
     / - display "Hello HBNB!"
     /hbnb - display "HBNB"
@@ -7,7 +7,7 @@ Routes:
     /python/<text> - display "Python is cool"
     /number/<n> - display n if integer
     /number_template/<n> - display a HTML page if n is int
-'''
+"""
 
 from flask import Flask, render_template
 
@@ -53,4 +53,4 @@ def num_template(n):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=4000)
+    app.run(host='0.0.0.0', port=5000)
