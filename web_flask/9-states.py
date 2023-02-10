@@ -8,6 +8,7 @@ from models.state import State
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
+
 @app.route('/states')
 def states():
     '''Displays an HTML page with a list of all State objects in DBStorage.
