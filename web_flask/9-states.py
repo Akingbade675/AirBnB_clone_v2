@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.url_map.strict_slashes = False
 
 
-@app.route('/states')
+@app.route('/states', strict_slashes=False)
 def states():
     '''Displays an HTML page with a list of all State objects in DBStorage.
     States are sorted by name.
@@ -18,7 +18,7 @@ def states():
     return render_template('9-states.html', states=states)
 
 
-@app.route('/states/<id>')
+@app.route('/states/<id>', strict_slashes=False)
 def states_id(id):
     '''Displays an HTML page with info about <id>, if it exists.'''
     for state in storage.all("State").values():

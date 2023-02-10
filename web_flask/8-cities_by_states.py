@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.url_map.strict_slashes = False
 
 
-@app.route('/cities_by_states')
+@app.route('/cities_by_states', strict_slashes=False)
 def list_states():
     '''Displays an HTML page with a list of all State objects in DBStorage.
     States are sorted by name.
